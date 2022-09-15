@@ -1,12 +1,11 @@
 <!-- TODO Application entry point. Login view -->
-<?php require_once ("register.class.php"); 
-
-if(isset($_POST['submit'])){
-    $user =($_POST['username']);( $_POST['password']);
-}
-
-
+<?php require("loginManager.php"); ?>
+<?php
+   if(isset($_POST['submit'])){
+      $user = new loginUser($_POST['username'], $_POST['password']);
+   }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,38 +39,40 @@ if(isset($_POST['submit'])){
             
                 <hr>
             
-                <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+                <form method="post" enctype="multipart/form-data" autocomplete="off">
 <!-- USER -->
                     <div class="input-group mb-3">
                         <div class="input-group-append">            
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control input_user" id="textUser" name="username" placeholder="Username*" required>
+                        <input type="text" name="username" class="form-control input_user" value="" placeholder="Email">
+                        
                     </div>
 <!-- PASSWORD -->
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="text" class="form-control input_user" id="textPass" name="password" placeholder="Password*" required>
+                        <input type="text" name="password" class="form-control input_pass" placeholder="password">
                     </div>        
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Acceso</button>
+                            <button type="submit" name="submit">Register</button>
                             </div> 
                         </div>                                           
                     </div>      
                 </form>
-                    
-                <!-- messages -->
-<!-- end messages -->   
 
+                <!-- messages -->
+                <div class="row">
+                    <div class="col-12">
+                        <p class="error"><?php echo @$user->error ?> </p>
+                        <p class="success"><?php echo @$user->success ?> </p>
+                    </div>
+                </div> <!-- end messages -->     
             </div>
-        </div>
-        <div class="mt-3" id="respuesta">
-            
         </div>
     </div> 
     
