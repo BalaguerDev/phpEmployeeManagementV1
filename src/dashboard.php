@@ -30,7 +30,7 @@
   <li class="nav-item">
     <a class="nav-link disabled ">Employee</a>
   </li>
-  <a class="nav-link active" id ="logOut">Log Out</a>
+  <div class="sticky-lg-top"><a class="nav-link active" href="index.php">Log Out</a></div>
   </li>
 </ul>
 </div>
