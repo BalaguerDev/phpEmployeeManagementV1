@@ -1,8 +1,8 @@
 <!-- TODO Main view or Employees Grid View here is where you get when logged here there's the grid of employees -->
 <?php
+require '../src/dashboard2.php';
 
-
-
+$users = getUsers();
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +104,33 @@
     </tr>
   </tbody>
 </table>
-
+<table class ="table">
+  <thead>
+    <tr>
+    <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone<br>Number</th>
+      <th scope="col">Street No.</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Postal<br>Code</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($users as $user): ?>
+      <tr>
+        <td><?php echo $user['name']?></td>
+        <td><?php echo $user['email']?></td>
+        <td><?php echo $user['phoneNumber']?></td>
+        <td><?php echo $user['streetAddress']?></td>
+        <td><?php echo $user['city']?></td>
+        <td><?php echo $user['state']?></td>
+        <td><?php echo $user['postalCode']?></td>
+        <td><?php echo $user['age']?></td>
+      </tr>
+      <?php endforeach;; ?>
+  </tbody>
+  </table>
 </body>
 </html>
