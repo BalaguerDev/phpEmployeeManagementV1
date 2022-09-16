@@ -1,3 +1,5 @@
+<!-- Este archivo realizará las operaciones necesarias (crear, leer, actualizar y eliminar) que serán llamadas posteriormente por el archivo "employeeController.php". -->
+
 <?php
 /**
  * EMPLOYEE FUNCTIONS LIBRARY
