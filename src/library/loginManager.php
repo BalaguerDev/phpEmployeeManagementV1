@@ -2,34 +2,41 @@
  -->
 
 <?php
-class LoginUser{                            /* definimos clase */
-   private $username;                      /* datos user insertados por usuario */
-   private $password;                      /* datos password insertados por usuario */
-   public $error;                          /* error */
-   public $success;                        /* correcto  */
-   private $storage = "users.json";
-   private $stored_users;
+class LoginUser{                    /* definimos clase */
+   private $username;               /* datos user insertados por usuario */
+   private $password;               /* datos password insertados por usuario */
+   public $error;                   /* error */
+   public $success;                 /* correcto  */
 
     // class methods -----------------------------------------
    public function __construct($username, $password){
-      $this->name = $username;
+      $this->username = $username;
       $this->password = $password;
-      $this->stored_users = json_decode(file_get_contents($this->storage), true);
       $this->login();
- }
+   }
 
- private function login(){
-    foreach ($this->stored_users as $user) {
-       if($user['name'] == $this->username){
-          if(password_verify($this->password, $user['password'])){
-             // You can set a session and redirect the user to his account.
-             return  $this->success = "You are loged in";
-          }
-       }
-    }
-    return $this->error = "Wrong username or password";
- }
+   private function login(){
+      $usersJson = file_get_contents("resources\users.json");
+      $decodedJson = json_decode($usersJson,true);
+      $userLogin = $decodedJson['users'];
+
+      foreach($userLogin as $users){
+         $user = $users["name"];
+         $password = $users["password"];
+
+         if($user == $this ->username){
+            if(password_verify($this->password,$password)){
+               session_start();
+               $_SESSION["user"] = $this ->username;
+               header("Location: src\dashboard.php"); exit();
+            }
+         }
+      }
+      return $this->error ="<div class='alert alert-danger d-flex justify-content-center' role='alert'>Usuario o contraseña incorrectos</div>";
+   }
 } // end of class
+
+
 
 
 

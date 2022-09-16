@@ -1,10 +1,14 @@
 <!-- TODO Application entry point. Login view -->
-<?php require_once ("src/library/loginManager.php") ?>
+
+<?php require_once ("src\library\loginManager.php")?>
+
 <?php
    if(isset($_POST['submit'])){
-      $user = new LoginUser($_POST['usuario'], $_POST['pass']);
+      $user = new LoginUser($_POST['username'], $_POST['password']);
    }
+
 ?>
+
 
 
 
@@ -23,6 +27,8 @@
     <script src="assets/js/index.js"defer ></script>
 </head>
 
+
+
 <body>
     <!-- LOGIN -->
     <div class="bg-light container-fluid w-100 d-flex justify-content-center align-items-center" style="height:100vh">
@@ -32,13 +38,13 @@
             
                 <hr>
             
-                <form method="POST" id="formulario" autocomplete="off">
+                <form action="" method="post" enctype="multipart/form-data" autocomplete="off" name="form">
 <!-- USER -->
                     <div class="input-group mb-3">
                         <div class="input-group-append">            
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" id="txtUser" name="usuario" class="form-control input_user" value="" placeholder="Email">
+                        <input type="text" name="username" class="form-control input_user" placeholder="Username" autocomplete="off">
                         
                     </div>
 <!-- PASSWORD -->
@@ -46,28 +52,24 @@
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" name="pass" id="txtPassword" class="form-control input_pass" placeholder="password">
+                        <input type="password" name="password" class="form-control input_pass" placeholder="Password">
                     </div>        
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-primary" id="login_submit">Entrar</button>
-                            </div> 
-                        </div>                                           
-                    </div>      
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" name="submit" class="btn btn-primary btn-block btn-lg  text-bg-primary">Login</button>
+                    </div>   
                 </form>
 
-                <!-- messages -->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="error"><?php echo @$user->error ?> </p>
-                        <p class="success"><?php echo @$user->success ?> </p>
-                    </div>
-                </div> <!-- end messages -->     
-            </div>
+                <div class="col-12">
+                    <p class="error"><?php echo @$user->error ?> </p>
+                    <p class="success"><?php echo @$user->success ?> </p>
+                </div>
+            </div> <!-- end messages -->   
+                  
         </div>
-    </div> 
+    </div>
+</div> 
+    
+    
     
 
 
