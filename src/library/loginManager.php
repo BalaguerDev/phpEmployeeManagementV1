@@ -6,7 +6,7 @@ class LoginUser{                            /* definimos clase */
     private $pass;                          /* datos password insertados por usuario */
     public $error;                          /* error */
     public $success;                        /* correcto  */
-    private $storage = "../../assets/resources/users.json";
+    private $storage = "sessionHelper.php";
     private $stored_users;
 
     // class methods -----------------------------------------
