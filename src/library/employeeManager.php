@@ -11,6 +11,7 @@
 function addEmployee(array $newEmployee)
 {
 // TODO implement it
+
 }
 
 
@@ -23,12 +24,15 @@ function deleteEmployee(string $id)
 function updateEmployee(array $updateEmployee)
 {
 // TODO implement it
+
+
 }
 
 
-function getEmployee(string $id)
+function getEmployee()
 {
 // TODO implement it
+return json_decode(file_get_contents(filename:__DIR__.'./../../resources/employees.json'), associative: true);
 }
 
 
@@ -47,3 +51,4 @@ function getNextIdentifier(array $employeesCollection): int
 {
 // TODO implement it
 }
+?>
