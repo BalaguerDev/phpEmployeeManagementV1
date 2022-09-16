@@ -12,6 +12,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,6 +31,7 @@
 
 
 <body>
+
     <!-- LOGIN -->
     <div class="bg-light container-fluid w-100 d-flex justify-content-center align-items-center" style="height:100vh">
         <div class="card" style="width:400px">
@@ -57,6 +59,7 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" name="submit" class="btn btn-primary btn-block btn-lg  text-bg-primary">Login</button>
                     </div>   
+            
                 </form>
 
                 <div class="col-12">

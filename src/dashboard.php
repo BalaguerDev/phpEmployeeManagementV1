@@ -1,9 +1,10 @@
 <!-- TODO Main view or Employees Grid View here is where you get when logged here there's the grid of employees -->
-<?php require_once("library\loginManager.php");?>
-<?php require_once("../src/library/employeeManager.php");?>
+<?php 
+require_once("library\loginManager.php");
+require_once("../src/library/employeeManager.php");
+require_once("library\sessionHelper.php");
 
-<?php
-    session_start();
+;
 
     if(!isset($_SESSION["user"])){
         header("Location: ../index.php"); exit();
@@ -21,12 +22,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<link rel="stylesheet" href="assets/css/main.css">
+
+<link rel="stylesheet" href="assets\css\main.css">
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <body>
+    
+
+
 <div class="p-3 mb-2 bg-light text-dark">
 <ul class="nav">
   <li class="nav-item">
