@@ -47,8 +47,6 @@ require_once("library\sessionHelper.php");
 </div>
   </li>
 </ul>
-<div class="d-flex justify-content-evently"><a href="" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
-</div>
 </form>
 </div>
 <!-- Esquema de trabajadores  -->
@@ -64,7 +62,11 @@ require_once("library\sessionHelper.php");
       <th scope="col">State</th>
       <th scope="col">Postal<br>Code</th>
       <th scope="col">Age</th>
-      <th scope="col">Action</th>
+      <th scope="col"><div class="d-flex justify-content-evently"><a href="" class="btn btn-dark pull-right"><i class="fa fa-plus"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg> </a>
+</div></th>
     </tr>
   </thead>
   <tbody>
@@ -95,19 +97,8 @@ require_once("library\sessionHelper.php");
   </tbody>
   </table>
   <!--MODAL FOR EDIT AND ADD-->
-  "id": 1,
-        "name": "Rack",
-        "lastName": "Lei",
-        "email": "jackon@network.com",
-        "gender": "man",
-        "city": "San Jone",
-        "streetAddress": "126",
-        "state": "CA",
-        "age": "24",
-        "postalCode": "394221",
-        "phoneNumber": "7383627627"
-<form method="POST">
-    <a href="src\dashboard.php">Back</a>
+
+  <div class="modal-dialog modal-lg">
     <p>
         <label for = "id">ID</label>
         <input type="text" id="id" name="id">
@@ -152,7 +143,34 @@ require_once("library\sessionHelper.php");
     </p>
     <input type="submit" name="save" value="Save">
 </form>
-
+    </div>
+<?php
+    if(isset($_POST['save'])){
+        //open the json file
+        $data = file_get_contents('members.json');
+        $data = json_decode($data);
+ 
+        //data in out POST
+        $input = array(
+            'id' => $_POST['id'],
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'gender' => $_POST['gender'],
+            'city' => $_POST['city'],
+            'state' => $_POST['state'],
+            'age' => $_POST['age'],
+            'postalCode' => $_POST['postalCode'],
+            'phoneNumber' => $_POST['phoneNumber']
+        );
+ 
+        //append the input to our array
+        $data[] = $input;
+        //encode back to json
+        $data = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents('members.json', $data);
+ 
+    }
+?>
 
 
 
