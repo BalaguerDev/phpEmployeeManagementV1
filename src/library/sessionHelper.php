@@ -10,7 +10,7 @@ if (!isset($_SESSION['tiempo'])) {
 
     }else if (time() - $_SESSION['tiempo'] > 5) {
     
-    sessionLogout();
+        echo '<script language="javascript">alert("Su sesión ha sido cerrada por inactividad, porfavor vuelva a iniciar sesión");window.location.href="library/loginController.php"</script>';
     }
 
 $_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
