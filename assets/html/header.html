@@ -1,4 +1,18 @@
 
+<?php
+require_once("library\loginManager.php");
+require_once("../src/library/employeeManager.php");
+require_once("library\sessionHelper.php");
+
+;
+
+    if(!isset($_SESSION["user"])){
+        header("Location: ../index.php"); exit();
+    }
+
+    $users = getEmployee();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
