@@ -1,1 +1,5 @@
-<!-- Este archivo manejará las peticiones HTTP que se harán para crear, leer, actualizar y eliminar los empleados y para ello debe incluir el archivo "employeeManager.php" y llamar a las funciones correspondientes del mismo que se encargarán de realizar las operaciones. -->
+<?php
+
+require ("./employeeManager.php");
+getEmployee();
+?>

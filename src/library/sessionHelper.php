@@ -2,7 +2,7 @@
 
 
 <?php
-require_once("loginManager.php");
+require_once "loginManager.php";
 
 session_start();
 if (!isset($_SESSION['tiempo'])) {
@@ -15,4 +15,4 @@ if (!isset($_SESSION['tiempo'])) {
 
 $_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
 
-?>
+ ?>

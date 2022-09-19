@@ -15,40 +15,39 @@ function addEmployee(array $newEmployee)
 }
 
 
-function deleteEmployee(string $id)
-{
-// TODO implement it
-}
-
-
-function updateEmployee(array $updateEmployee)
-{
-// TODO implement it
-
+function deleteEmployee(string $id){
 
 }
 
 
-function getEmployee()
+/* function updateEmployee(array $updateEmployee)
 {
 // TODO implement it
-return json_decode(file_get_contents(filename:__DIR__.'./../../resources/employees.json'), associative: true);
+
+
+} */
+
+
+function getEmployee(){    
+    $json = file_get_contents("../resources/employees.json");
+    $data = json_decode($json,true);
+ 
 }
 
 
-function removeAvatar($id)
+/* function removeAvatar($id)
 {
 // TODO implement it
-}
+} */
 
 
-function getQueryStringParameters(): array
+/* function getQueryStringParameters(): array
 {
 // TODO implement it
-}
+} */
 
-function getNextIdentifier(array $employeesCollection): int
+/* function getNextIdentifier(array $employeesCollection): int
 {
 // TODO implement it
-}
+} */
 ?>

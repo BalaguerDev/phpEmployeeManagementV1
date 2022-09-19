@@ -1,18 +1,4 @@
 
-<?php
-require_once("library\loginManager.php");
-require_once("../src/library/employeeManager.php");
-require_once("library\sessionHelper.php");
-
-;
-
-    if(!isset($_SESSION["user"])){
-        header("Location: ../index.php"); exit();
-    }
-
-    $users = getEmployee();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,15 +6,17 @@ require_once("library\sessionHelper.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>Dashboard</title>
 
-<link rel="stylesheet" href="assets\css\main.css">
+    <!-- Esquema de trabajadores  -->
+<!-- <link rel="stylesheet" href="../css/main.css"> -->
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<body>
+</head>
+
+
 
 <!-- As a heading & navbar-->
     <nav class="navbar navbar-expand-lg" style="background-color: #6280c2;">
@@ -49,8 +37,8 @@ require_once("library\sessionHelper.php");
                         <a class="nav-link text-white " href="#">Employee</a>
                     </li>
                 </ul>
-                <button href="library\loginController.php" type="button" class="btn btn-outline-dark btn-sm me-md-2"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Log Out</button>
+                <a href="../../src/library/loginController.php"  class="btn btn-outline-dark btn-sm me-md-2"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Log Out</a>
             </div>
         </div>
     </nav>
