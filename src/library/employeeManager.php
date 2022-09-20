@@ -1,15 +1,8 @@
-<!-- Este archivo realizará las operaciones necesarias (crear, leer, actualizar y eliminar) que serán llamadas posteriormente por el archivo "employeeController.php". -->
-
 <?php
-/**
- * EMPLOYEE FUNCTIONS LIBRARY
- *
- * @author: Jose Manuel Orts
- * @date: 11/06/2020
- */
+
 
 /* AGREGAR EMPLEADO// EMPLEADO NUEVO */
-    if(isset($_POST['btnadd'])){
+     if(isset($_POST['btnadd'])){
         $data = file_get_contents("../resources/employees.json");
         $data = json_decode($data, true);
         $add_arr = array(
@@ -29,39 +22,42 @@
         $data = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents("../resources/employees.json", $data);
 // TODO implement it
+} 
+
+
+/* function deleteEmployee(string $id){
+   
+
+    
+}  */
+
+
+/* function updateEmployee(array $updateEmployee)
+{
+// TODO implement it
+}  */
+
+
+function getEmployee(){    
+    $json = file_get_contents("../../resources/employees.json");
+    return $json;
 }
 
 
-function deleteEmployee(string $id){
-
-}
-
-
-function updateEmployee(array $updateEmployee)
+/* function removeAvatar($id)
 {
 // TODO implement it
-} 
+}  */
 
 
-/* function getEmployee(){    
-    $json = file_get_contents("../resources/employees.json");
-    $data = json_decode($json,true);
-} */
-
-
-function removeAvatar($id)
+/*  function getQueryStringParameters(): array
 {
 // TODO implement it
-} 
+}  */
 
-
- function getQueryStringParameters(): array
+/*  function getNextIdentifier(array $employeesCollection): int
 {
 // TODO implement it
-} 
+}  */
 
- function getNextIdentifier(array $employeesCollection): int
-{
-// TODO implement it
-} 
 ?>
