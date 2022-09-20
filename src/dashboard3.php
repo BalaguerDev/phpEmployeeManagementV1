@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <input type="submit" value="Add employee" name="btnadd" class="btn btn-success mb-2 mt-3"></input>
+                            <input type="submit" value="Add employee" id="btnadd" class="btn btn-success mb-2 mt-3"></input>
                         </div>
 
                     </form>
@@ -125,3 +125,7 @@
     <script src="../assets/js/index.js"></script>
 </body>
 </html>
+
+
+
+<!-- //https://medium.com/@hardimaneric/full-crud-with-fetch-and-javascript-4e6c43080261 -->

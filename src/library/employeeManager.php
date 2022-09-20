@@ -2,7 +2,10 @@
 
 
 /* AGREGAR EMPLEADO// EMPLEADO NUEVO */
-     if(isset($_POST['btnadd'])){
+
+
+
+if(isset($_POST['btnadd'])){
         $data = file_get_contents("../resources/employees.json");
         $data = json_decode($data, true);
         $add_arr = array(

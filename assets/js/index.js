@@ -20,8 +20,7 @@ function tabla(datos){
     for(let valor of datos){
         contenido.innerHTML +=`
         <div type="button">
-            <tr onclick="document.location = 'links.html';">
-
+            <tr>
                 <th scope="row">${valor.id}</th>
                 <td>${valor.name} ${valor.lastName}</td>
                 <td>${valor.email}</td>
@@ -45,4 +44,30 @@ function tabla(datos){
     }
 }
 
+ // NEW ADD EMPLOYEE
+const addNew = document.getElementById('btnadd')
+addNew.addEventListener('submit', function (event) {
+    fetch("./library/employeeController.php?action=listEmployees", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        gender: `${event.target.txtGender.value}`,
+        id: `${event.target.txtId.value}`,
+        age: `${event.target.txtAge.value}`,
+        name: `${event.target.txtName.value}`,
+        lastName: `${event.target.txtLastName.value}`,
+        phoneNumber: `${event.target.txtPost.value}`,
+        email: `${event.target.txtEmail.value}`,
+        city: `${event.target.txtCity.value}`,
+        streetAddress: `${event.target.txStreet.value}`,
+        state: `${event.target.txtState.value}`,
+        postalCode: `${event.target.txtPostalC.value}`,
+    })
+  })
+    .then(resp => resp.json())
+    .then(datos)
+})
+ 
 
