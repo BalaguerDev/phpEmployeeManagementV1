@@ -109,7 +109,7 @@
   </thead>
   <tbody>
     
-    <?php foreach($users as $user): ?>
+    <?php foreach($users as $user); ?>
       <!-- recorrer los diferentes tipos de arrays y objetos -->
       <a href="" style="cursor:pointer">
       <tr>
