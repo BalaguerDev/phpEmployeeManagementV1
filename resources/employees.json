@@ -115,5 +115,31 @@
         "state": "LU",
         "postalCode": 63281,
         "phoneNumber": "91232876454"
+    },
+    {
+        "gender": "Ms",
+        "id": "9",
+        "age": "30",
+        "name": "Alex",
+        "lastName": "Balaguer Reza",
+        "phoneNumber": "677147018",
+        "email": "balareza92@gmail.com",
+        "city": "Barcelona",
+        "streetAddress": "Carrer de Pujades, 15",
+        "state": "Barcelona",
+        "postalCode": "08018"
+    },
+    {
+        "gender": "Ms",
+        "id": "10",
+        "age": "28",
+        "name": "Pau",
+        "lastName": "Civill",
+        "phoneNumber": "696 969 696",
+        "email": "pauElFaker@gmail.com",
+        "city": "PornCity",
+        "streetAddress": "69",
+        "state": "Pornhub",
+        "postalCode": "08069"
     }
 ]

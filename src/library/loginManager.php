@@ -28,7 +28,7 @@ class LoginUser{                    /* definimos clase */
             if(password_verify($this->password,$password)){
                session_start();
                $_SESSION["user"] = $this ->username;
-               header("Location: src\dashboard.php"); exit();
+               header("Location: src\dashboard2.php"); exit();
             }
          }
       }
@@ -44,7 +44,6 @@ session_start();
 session_unset();
 session_destroy();
 header("Location: ../../index.php");
-
 }
 
 

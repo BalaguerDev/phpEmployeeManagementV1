@@ -1,5 +1,5 @@
 <?php
 
-require ("./employeeManager.php");
+/* require ("./employeeManager.php");
 getEmployee();
-?>
+?> */

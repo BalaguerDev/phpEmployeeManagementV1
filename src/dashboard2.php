@@ -1,17 +1,17 @@
 <?php 
 //HEADER DE NUESTRA PAGINA
-  require_once "../assets\html\header.html";
+  require_once "../assets/html/header.html";
 
 //PAGINAS PARA MOSTRAR LOS EMPLEADOS, FUNCIÓN INACTIVIDAD, LOGOUT
   require_once "./library/loginManager.php";
   require_once "library/employeeManager.php";
-  require_once "library\sessionHelper.php";
+  require_once "library/sessionHelper.php";
 
 //RESTRICCIÓN ACCESO SOLO A LOGEADOS
   if(!isset($_SESSION["user"])){
         header("Location: ../index.php"); exit();
     }
-  $users = getEmployee();
+
 ?>
 
 
@@ -55,70 +55,66 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New Employee</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                <h3 class="text-primary mb-3 mt-2 text-center" id="exampleModalLabel">New Employee</h3>
 
                 <div class="modal-body">
-                    <form action="" class="row">
+                    <form method="post" name="frmAdd" class="row">
                         <div class="row">
                             <div class="col mb-3">
-                                <select name="gender" id="gender" placeholder="Gender" class="form-select" aria-label="Default select example">
+                                <select name="txtGender" id="gender" placeholder="Gender" class="form-select" aria-label="Default select example" require>
                                     <option value="Ms">Ms</option>
                                     <option value="Mr">Mr</option>
                                     <option value="Other">Other</option>    
                                 </select>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Id">
+                                <input name="txtId" type="text" class="form-control" placeholder="Id" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Age">
+                                <input name="txtAge"type="text" class="form-control" placeholder="Age" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col mb-3">
-                                <input type="text" class="form-control" placeholder="First name">
+                                <input name="txtName"type="text" class="form-control" placeholder="First name" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name">
+                                <input name="txtLastName"type="text" class="form-control" placeholder="Last name" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col mb-3">
-                                <input type="text" class="form-control" placeholder="Phone number">
+                                <input name="txtPhone"type="text" class="form-control" placeholder="Phone number" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input name="txtEmail"type="text" class="form-control" placeholder="Email" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col mb-3">
-                                <input type="text" class="form-control" placeholder="City">
+                                <input name="txtCity"type="text" class="form-control" placeholder="City" require>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Street Nº">
+                                <input name="txtStreet"type="text" class="form-control" placeholder="Street Nº" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col mb-3">
-                                <input type="text" class="form-control" placeholder="State">
+                                <input name="txtState"type="text" class="form-control" placeholder="State" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Postal Code">
+                                <input name="txtPostalC"type="text" class="form-control" placeholder="Postal Code" required>
                             </div>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <input type="submit" value="Add employee" name="btnadd" class="btn btn-primary mb-2 mt-3" required></input>
                         </div>
 
                     </form>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Add Employee</button>
                 </div>
             </div>
         </div>

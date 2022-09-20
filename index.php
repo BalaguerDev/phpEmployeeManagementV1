@@ -57,7 +57,7 @@
                         <input type="password" name="password" class="form-control input_pass" placeholder="Password">
                     </div>        
                     <div class="d-flex justify-content-center">
-                        <button type="submit" name="submit" class="btn btn-primary btn-block btn-lg  text-bg-primary">Login</button>
+                        <button type="submit" name="submit" class="btn btn-primary btn-lg text-bg-primary">Login</button>
                     </div>   
             
                 </form>
