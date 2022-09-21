@@ -7,7 +7,7 @@ function addEmployees($newEmployee){
     $employees = json_decode($path, true);
     
     $newEmployee["id"] = end($employees)["id"]+1;          //función para que no se repitan los id, y autoasignarles un numero dependiendo del último
-    $newObjEmployee = (object) $newEmployee;
+     $newObjEmployee = (object) $newEmployee;
     array_push($employees, $newObjEmployee);
     file_put_contents("../../resources/employees.json", json_encode($employees));
     echo json_encode($employees);
@@ -19,17 +19,19 @@ function addEmployees($newEmployee){
 
 /* DELETE EMPLEADO */ 
 function deleteEmployee($deleteId){
-    $path = file_get_contents("../../resources/employees.json");
-    $employees = json_decode($path, true);
+    $path = json_decode(file_get_contents("../../resources/employees.json"),true);
+   
 
-    for ($e=0 ; $e< count($employees) ; $e++){
+    for ($e=0 ; $e< count($path) ; $e++){
 
-        if($deleteId == $employees[$e]["id"])
-        unset($employees[$e]);
+        if(strval($path[$e]["id"]) === $deleteId){
+        unset($path[$e]);
+        }
+  
     }
-    file_put_contents("../../resources/employees.json", json_encode($employees));
-    echo json_encode($employees);
-
+    file_put_contents("../../resources/employees.json", json_encode($path));
+    $arrayPath = (array)$path;
+    echo json_encode($arrayPath);
 }
 
 
@@ -50,8 +52,10 @@ function deleteEmployee($deleteId){
 
 
 function getEmployees(){    
-    $json = file_get_contents("../../resources/employees.json");
-    return $json;
+    $path = json_decode(file_get_contents("../../resources/employees.json"), true);
+    echo json_encode($path);
+
+    
 }
 
 

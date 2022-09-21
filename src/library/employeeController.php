@@ -4,9 +4,9 @@ include("employeeManager.php");
 
 
 if (isset($_GET["action"])&&$_GET["action"]=="listEmployees"){                  //LIST EMPLOYEES
-    echo getEmployees();
+    getEmployees();
 
-}else if (isset($_GET["action"])&&$_GET["action"]=="addNewEmployees"){   //ADD EMPLOYEES
+}else if (isset($_GET["action"])&&$_GET["action"]==="addNewEmployees"){   //ADD EMPLOYEES
     $newEmployee = [
         "id" => 0,
         "name" => $_POST['txtName'],
@@ -22,7 +22,7 @@ if (isset($_GET["action"])&&$_GET["action"]=="listEmployees"){                  
     ];
     addEmployees($newEmployee);
 
-} else if (isset($_GET["action"]) && $_GET["action"]=="delete"){   // DELETE EMPLOYEES
+} else if (isset($_GET["action"]) && $_GET["action"]==="delete"){   // DELETE EMPLOYEES
     deleteEmployee($_GET["id"]);
 }
 
