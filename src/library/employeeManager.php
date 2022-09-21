@@ -16,11 +16,48 @@ function addEmployee($newEmployee){
 
 
 
-/* function deleteEmployee(string $id){
+function deleteEmployee($deleteEmployee){
    
+          
+        $path = file_get_contents("../../resources/employees.json");
+        $employees = json_decode($path, true);
+
+        unset($employees["${valor.id}"]);
+
+        $data = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents('members.json', $data);
 
     
-}  */
+
+    
+    //get the index
+    
+ 
+    //fetch data from json
+    $data = file_get_contents('members.json');
+    $data = json_decode($data);
+ 
+    //delete the row with the index
+    unset($data[$index]);
+ 
+    //encode back to json
+    $data = json_encode($data, JSON_PRETTY_PRINT);
+    file_put_contents('members.json', $data);
+ 
+    header('location: index.php');
+?>
+} 
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* function updateEmployee(array $updateEmployee)
