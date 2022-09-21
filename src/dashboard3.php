@@ -15,27 +15,9 @@
 ?>
 
 
-
-<?php
-
-
-
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
-<body>
     <div class="container my-5 text-center">
         <div class="mt-5">  
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -48,20 +30,19 @@
                 </thead>
 
                 <tbody id="contenido">
-                
-
+               
                 </tbody>
+
             </table>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <h3 class="text-primary mb-3 mt-2 text-center" id="exampleModalLabel">New Employee</h3>
 
                 <div class="modal-body">
-                    <form method="post" name="frmAdd" class="row">
+                    <form method="post" name="frmAdd" class="row" id="addForm">
                         <div class="row">
                             <div class="col mb-3">
                                 <select name="txtGender" id="gender" placeholder="Gender" class="form-select" aria-label="Default select example" require>
@@ -70,9 +51,7 @@
                                     <option value="Other">Other</option>    
                                 </select>
                             </div>
-                            <div class="col">
-                                <input name="txtId" type="text" class="form-control" placeholder="Id" required>
-                            </div>
+                      
                             <div class="col">
                                 <input name="txtAge"type="text" class="form-control" placeholder="Age" required>
                             </div>
@@ -114,9 +93,8 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <input type="submit" value="Add employee" id="btnadd" class="btn btn-success mb-2 mt-3"></input>
+                            <input type="submit" value="Add employee" id="btnadd" data-bs-dismiss="modal" class="btn btn-success mb-2 mt-3"></input>
                         </div>
-
                     </form>
                 </div>
             </div>

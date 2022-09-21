@@ -2,30 +2,18 @@
 
 
 /* AGREGAR EMPLEADO// EMPLEADO NUEVO */
+function addEmployee($newEmployee){
+    $path = file_get_contents("../../resources/employees.json");
+    $employees = json_decode($path, true);
+    
+    $newEmployee["id"] = end($employees)["id"]+1;          //función para que no se repitan los id, y autoasignarles un numero dependiendo del último
+    $newObjEmployee = (object) $newEmployee;
+    array_push($employees, $newObjEmployee);
+    file_put_contents("../../resources/employees.json", json_encode($employees));
+    echo json_encode($employees);
+}
 
 
-
-if(isset($_POST['btnadd'])){
-        $data = file_get_contents("../resources/employees.json");
-        $data = json_decode($data, true);
-        $add_arr = array(
-        'gender' => $_POST['txtGender'],
-        "id" => $_POST['txtId'],
-        'age' => $_POST['txtAge'],
-        'name' => $_POST['txtName'],
-        'lastName' => $_POST['txtLastName'],
-        'phoneNumber' => $_POST['txtPhone'],
-        'email' => $_POST['txtEmail'],
-        'city' => $_POST['txtCity'],
-        'streetAddress' => $_POST['txtStreet'],
-        'state' => $_POST['txtState'],
-        'postalCode' => $_POST['txtPostalC'],
-        );
-        $data[] = $add_arr;
-        $data = json_encode($data, JSON_PRETTY_PRINT);
-        file_put_contents("../resources/employees.json", $data);
-// TODO implement it
-} 
 
 
 /* function deleteEmployee(string $id){
@@ -41,7 +29,7 @@ if(isset($_POST['btnadd'])){
 }  */
 
 
-function getEmployee(){    
+function getEmployees(){    
     $json = file_get_contents("../../resources/employees.json");
     return $json;
 }

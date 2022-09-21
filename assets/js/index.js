@@ -1,23 +1,24 @@
 
 listEmployees();
 
-
+//LIST EMPLOYEES AND SHOW TO THE TABLE
 function listEmployees(){
-
     let contenido = document.getElementById('contenido');
 
         fetch("./library/employeeController.php?action=listEmployees", { method: "GET" }) 
         .then(res => res.json())
         .then(datos =>{
-   /*  console.log(datos)  */
+        /*  console.log(datos)  */
             tabla(datos); 
-            console.log(datos);      
-          })
-    }
+          /*   console.log(datos); */      
+        })
+}
+
 function tabla(datos){
-    console.log(datos) 
-    contenido.innerHTML ='';
+/*     console.log(datos)  */
+      contenido.innerHTML ='';  
     for(let valor of datos){
+     
         contenido.innerHTML +=`
         <div type="button">
             <tr>
@@ -44,30 +45,31 @@ function tabla(datos){
     }
 }
 
- // NEW ADD EMPLOYEE
-const addNew = document.getElementById('btnadd')
-addNew.addEventListener('submit', function (event) {
-    fetch("./library/employeeController.php?action=listEmployees", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        gender: `${event.target.txtGender.value}`,
-        id: `${event.target.txtId.value}`,
-        age: `${event.target.txtAge.value}`,
-        name: `${event.target.txtName.value}`,
-        lastName: `${event.target.txtLastName.value}`,
-        phoneNumber: `${event.target.txtPost.value}`,
-        email: `${event.target.txtEmail.value}`,
-        city: `${event.target.txtCity.value}`,
-        streetAddress: `${event.target.txStreet.value}`,
-        state: `${event.target.txtState.value}`,
-        postalCode: `${event.target.txtPostalC.value}`,
-    })
-  })
-    .then(resp => resp.json())
-    .then(datos)
+
+
+
+//ADD NEW EMPLOYEE
+let btnadd = document.getElementById('btnadd');
+let addForm= document.getElementById("addForm");
+
+addForm.addEventListener("submit", e =>{
+  e.preventDefault();
+ /*  console.log("acabamos de crear") */
+
+  let formData= new FormData(addForm);          
+  fetch("./library/employeeController.php?action=addNewEmployees", { 
+    method: "POST",
+    body:  formData,
+  
+}) 
+        .then(res => res.json())
+        .then(datos =>{
+
+             tabla(datos); 
+        
+   
+          })
 })
- 
+
+
 
