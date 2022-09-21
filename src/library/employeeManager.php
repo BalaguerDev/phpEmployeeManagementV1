@@ -2,7 +2,7 @@
 
 
 /* AGREGAR EMPLEADO// EMPLEADO NUEVO */
-function addEmployee($newEmployee){
+function addEmployees($newEmployee){
     $path = file_get_contents("../../resources/employees.json");
     $employees = json_decode($path, true);
     
@@ -12,42 +12,25 @@ function addEmployee($newEmployee){
     file_put_contents("../../resources/employees.json", json_encode($employees));
     echo json_encode($employees);
 }
+/* EDITAR EMPLEADO */
 
 
 
 
-function deleteEmployee($deleteEmployee){
-   
-          
-        $path = file_get_contents("../../resources/employees.json");
-        $employees = json_decode($path, true);
+/* DELETE EMPLEADO */ 
+function deleteEmployee($deleteId){
+    $path = file_get_contents("../../resources/employees.json");
+    $employees = json_decode($path, true);
 
-        unset($employees["${valor.id}"]);
+    for ($e=0 ; $e< count($employees) ; $e++){
 
-        $data = json_encode($data, JSON_PRETTY_PRINT);
-        file_put_contents('members.json', $data);
+        if($deleteId == $employees[$e]["id"])
+        unset($employees[$e]);
+    }
+    file_put_contents("../../resources/employees.json", json_encode($employees));
+    echo json_encode($employees);
 
-    
-
-    
-    //get the index
-    
- 
-    //fetch data from json
-    $data = file_get_contents('members.json');
-    $data = json_decode($data);
- 
-    //delete the row with the index
-    unset($data[$index]);
- 
-    //encode back to json
-    $data = json_encode($data, JSON_PRETTY_PRINT);
-    file_put_contents('members.json', $data);
- 
-    header('location: index.php');
-?>
-} 
-
+}
 
 
 

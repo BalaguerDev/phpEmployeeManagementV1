@@ -8,7 +8,7 @@ session_start();
 if (!isset($_SESSION['tiempo'])) {
     $_SESSION['tiempo']=time();
 
-    }else if (time() - $_SESSION['tiempo'] > 9000) {
+    }else if (time() - $_SESSION['tiempo'] > 6000) {
     
         echo '<script language="javascript">alert("Su sesión ha sido cerrada por inactividad, porfavor vuelva a iniciar sesión");window.location.href="library/loginController.php"</script>';
     }
