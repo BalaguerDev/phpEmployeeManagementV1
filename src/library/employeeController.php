@@ -3,10 +3,10 @@
 include("employeeManager.php");
 
 
-if (isset($_GET["action"])&&$_GET["action"]=="listEmployees"){                  //LIST EMPLOYEES
+if (isset($_GET["action"]) && $_GET["action"]=="listEmployees"){                  //LIST EMPLOYEES
     listEmployees();
 
-}else if (isset($_GET["action"])&&$_GET["action"]==="addNewEmployees"){   //ADD EMPLOYEES
+}else if (isset($_GET["action"]) && $_GET["action"]==="addNewEmployees"){   //ADD EMPLOYEES
     $newEmployee = [
         "id" => 0,
         "name" => $_POST['txtName'],

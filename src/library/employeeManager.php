@@ -21,22 +21,22 @@ function addEmployees($newEmployee){
 /*     $editRow = $_GET['editRow'];*/    
     
     $employees = json_decode(file_get_contents("../../resources/employees.json"), true);
-    for($emp=0 ; $emp< count($employees); $emp++){
-        if($employees[$emp]["id"]     ==    $updateEmployee['id']){
+    for($e=0 ; $e< count($employees); $e++){
+        if($employees[$e]["id"]     ==    $updateEmployee['id']){
 
-        $employees[$emp]["name"]            =      $updateEmployee['name'];
-        $employees[$emp]["lastName"]        =      $updateEmployee['lastName'];
-        $employees[$emp]["email"]           =      $updateEmployee['email'];
-        $employees[$emp]["city"]            =      $updateEmployee['city'];
-        $employees[$emp]["streetAddress"]   =      $updateEmployee['streetAddress'];
-        $employees[$emp]["state"]           =      $updateEmployee['state'];
-        $employees[$emp]["age"]             =      $updateEmployee['age'];
-        $employees[$emp]["postalCode"]      =      $updateEmployee['postalCode'];
-        $employees[$emp]["phoneNumber"]     =      $updateEmployee['phoneNumber'];
+        $employees[$e]["name"]            =      $updateEmployee['name'];
+        $employees[$e]["lastName"]        =      $updateEmployee['lastName'];
+        $employees[$e]["email"]           =      $updateEmployee['email'];
+        $employees[$e]["city"]            =      $updateEmployee['city'];
+        $employees[$e]["streetAddress"]   =      $updateEmployee['streetAddress'];
+        $employees[$e]["state"]           =      $updateEmployee['state'];
+        $employees[$e]["age"]             =      $updateEmployee['age'];
+        $employees[$e]["postalCode"]      =      $updateEmployee['postalCode'];
+        $employees[$e]["phoneNumber"]     =      $updateEmployee['phoneNumber'];
         }
 
         
-        $employees = json_encode($employees,);
+        $employees = json_encode($employees);
         file_put_contents("../../resources/employees.json", $employees);
 
     header('location: ../dashboard3.php');
@@ -81,55 +81,48 @@ function getEmployees($id){
         $state = $path[$e]['state'];
         $postalCode = $path[$e]['postalCode'];
         $phoneNumber= $path[$e]['phoneNumber'];
+        
         $form = <<<form
 
             <form method="POST" name="frmUpdate" action="./library/employeeController.php?action=edit&id=$id">
+                <label> First Name:
+                    <input type="text" name="txtName" value="$name"> 
+                </label>
 
-                <table align="center">
-                    <tr>
-                        <td colspan="2" align="center">Update Record</td>
-                    </tr>
-                    <tr>
-                        <td>First Name</td>
-                        <td><input type="text" name="txtName" value="$name"> </td>
-                    </tr>
-                    <tr>
-                        <td>Last Name</td>
-                        <td><input type="text" name="txtLastName" value="$lastName"> </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><input type="email" name="txtEmail" value="$email"> </td>
-                    </tr>
-                    <tr>
-                        <td>Age</td>
-                        <td><input type="number" name="txtAge" value="$age"> </td>
-                    </tr>
-                    <tr>
-                        <td>Street Adress</td>
-                        <td><input type="text" name="txtStreet" value="$streetAddress"> </td>
-                    </tr>
-                    <tr>
-                        <td>City</td>
-                        <td><input type="text" name="txtCity" value="$city"> </td>
-                    </tr>
-                    <tr>
-                        <td>State</td>
-                        <td><input type="text" name="txtState" value="$state"> </td>
-                    </tr>
-                    <tr>
-                        <td>Postal Code</td>
-                        <td><input type="text" name="txtPostalC" value="$postalCode"> </td>
-                    </tr>
-                    <tr>
-                        <td>Phone Number</td>
-                        <td><input type="phone" name="txtPhone" value="$phoneNumber"> </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center"><input type="submit" value="Update" name="btnUpdate"> </td>
-                    </tr>
-            </table>
-        </form>
+                <label> Last Name:
+                    <input type="text" name="txtLastName" value="$lastName"> 
+                </label>
+
+                <label> Email:
+                    <input type="text" name="txtEmail" value="$email"> 
+                </label>
+
+                <label> Age:
+                    <input type="text" name="txtAge" value="$age"> 
+                </label>
+
+                <label> Street Adress:
+                    <input type="text" name="txtStreet" value="$streetAddress"> 
+                </label>
+
+                <label> City:
+                    <input type="text" name="txtCity" value="$city"> 
+                </label>
+
+                <label> State:
+                    <input type="text" name="txtState" value="$state"> 
+                </label>
+
+                <label> Postal Code:
+                    <input type="text" name="txtPostalC" value="$postalCode"> 
+                </label>
+
+                <label> Phone Number:
+                    <input type="text" name="txtPhone" value="$phoneNumber"> 
+                </label>
+
+                <input type="submit" value="Update" name="btnUpdate"> 
+            </form>
         form;
        
         }
