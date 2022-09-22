@@ -27,10 +27,8 @@ if (isset($_GET["action"])&&$_GET["action"]=="listEmployees"){                  
 
 }else if(isset($_GET['action']) && $_GET['action']==="edit"){
 
-    
-    if(isset($_POST['btnUpdate'])){
         $updateEmployee = [
-            "id" => 0,
+            "id" => $_GET['id']  ,
             "name" => $_POST['txtName'],
             "lastName" => $_POST['txtLastName'],
             "email" => $_POST['txtEmail'],
@@ -42,10 +40,10 @@ if (isset($_GET["action"])&&$_GET["action"]=="listEmployees"){                  
             "postalCode" => $_POST['txtPostalC'],
             "phoneNumber" => $_POST['txtPhone']
         ];
-        $employees[$editRow] = $updateEmployee;
+      
+        editEmployee($updateEmployee);
     }
-    editEmployee($updateEmployee);
+   
     
-}
 
 ?>

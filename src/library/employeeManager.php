@@ -17,19 +17,31 @@ function addEmployees($newEmployee){
 
 
 /* EDITAR EMPLEADO */
- function editEmployee($updateEmployee){
-    $editRow = $_GET['editRow'];
-    $path = file_get_contents("../../resources/employees.json");
-    $employees = json_decode($path, true);
+ function editEmployee(array $updateEmployee){
+/*     $editRow = $_GET['editRow'];*/    
+    
+    $employees = json_decode(file_get_contents("../../resources/employees.json"), true);
+    for($emp=0 ; $emp< count($employees); $emp++){
+        if($employees[$emp]["id"]     ==    $updateEmployee['id']){
 
-    $row = $employees[$editRow];
-    array_push($employees, $updateEmployee);
+        $employees[$emp]["name"]            =      $updateEmployee['name'];
+        $employees[$emp]["lastName"]        =      $updateEmployee['lastName'];
+        $employees[$emp]["email"]           =      $updateEmployee['email'];
+        $employees[$emp]["city"]            =      $updateEmployee['city'];
+        $employees[$emp]["streetAddress"]   =      $updateEmployee['streetAddress'];
+        $employees[$emp]["state"]           =      $updateEmployee['state'];
+        $employees[$emp]["age"]             =      $updateEmployee['age'];
+        $employees[$emp]["postalCode"]      =      $updateEmployee['postalCode'];
+        $employees[$emp]["phoneNumber"]     =      $updateEmployee['phoneNumber'];
+        }
 
-    $path = json_encode($employees, JSON_PRETTY_PRINT);
- file_put_contents("../../resources/employees.json", $path);
- 
- header('location: dashboard3.php');
-} 
+        
+        $employees = json_encode($employees,);
+        file_put_contents("../../resources/employees.json", $employees);
+
+    header('location: ../dashboard3.php');
+    }
+}
 
 
 
@@ -58,11 +70,20 @@ function getEmployees($id){
 
     for ($e=0 ; $e< count($path) ; $e++){
 //strval = string value = valor insertado lo convierte a un string
-        if(strval($path[$e]["id"]) === $id){
+        if($path[$e]["id"] == $id){
             
-        ?>
+        $name = $path[$e]['name'];
+        $lastName = $path[$e]['lastName'];
+        $email = $path[$e]['email'];
+        $age = $path[$e]['age'];
+        $streetAddress = $path[$e]['streetAddress'];        
+        $city = $path[$e]['city'];
+        $state = $path[$e]['state'];
+        $postalCode = $path[$e]['postalCode'];
+        $phoneNumber= $path[$e]['phoneNumber'];
+        $form = <<<form
 
-            <form method="POST" name="frmUpdate"action="<?php echo $_SERVER['PHP_SELF'] ?>">
+            <form method="POST" name="frmUpdate" action="./library/employeeController.php?action=edit&id=$id">
 
                 <table align="center">
                     <tr>
@@ -70,50 +91,51 @@ function getEmployees($id){
                     </tr>
                     <tr>
                         <td>First Name</td>
-                        <td><input type="text" name="txtName" value="<?php echo $path[$e]['name'];?>"> </td>
+                        <td><input type="text" name="txtName" value="$name"> </td>
                     </tr>
                     <tr>
                         <td>Last Name</td>
-                        <td><input type="text" name="txtLastName" value="<?php echo $path[$e]['lastName'];?>"> </td>
+                        <td><input type="text" name="txtLastName" value="$lastName"> </td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td><input type="eem" name="txtEmail" value="<?php echo $path[$e]['email'];?>"> </td>
+                        <td><input type="email" name="txtEmail" value="$email"> </td>
                     </tr>
                     <tr>
                         <td>Age</td>
-                        <td><input type="text" name="txtStreet" value="<?php echo $path[$e]['age'];?>"> </td>
+                        <td><input type="number" name="txtAge" value="$age"> </td>
                     </tr>
                     <tr>
                         <td>Street Adress</td>
-                        <td><input type="text" name="txtState" value="<?php echo $path[$e]['streetAddress'];?>"> </td>
+                        <td><input type="text" name="txtStreet" value="$streetAddress"> </td>
                     </tr>
                     <tr>
                         <td>City</td>
-                        <td><input type="text" name="txtAge" value="<?php echo $path[$e]['city'];?>"> </td>
+                        <td><input type="text" name="txtCity" value="$city"> </td>
                     </tr>
                     <tr>
                         <td>State</td>
-                        <td><input type="text" name="txtPostalC" value="<?php echo $path[$e]['state'];?>"> </td>
+                        <td><input type="text" name="txtState" value="$state"> </td>
                     </tr>
                     <tr>
                         <td>Postal Code</td>
-                        <td><input type="text" name="txtPhone" value="<?php echo $path[$e]['postalCode'];?>"> </td>
+                        <td><input type="text" name="txtPostalC" value="$postalCode"> </td>
                     </tr>
                     <tr>
                         <td>Phone Number</td>
-                        <td><input type="text" name="txtPhone" value="<?php echo $path[$e]['phoneNumber'];?>"> </td>
+                        <td><input type="phone" name="txtPhone" value="$phoneNumber"> </td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center"><input type="submit" value="Update" name="btnUpdate"> </td>
                     </tr>
             </table>
         </form>
-        <?php
+        form;
+       
         }
     }
+    echo $form;
 }
-
 
 /* function updateEmployee(array $updateEmployee)
 {

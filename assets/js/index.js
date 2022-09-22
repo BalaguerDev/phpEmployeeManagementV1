@@ -46,12 +46,6 @@ function tabla(datos){
     }
 }
 
-/* let frmUpdate = document.getElementById("frmUpdate")
-
-frmUpdate.addEventListener("submit", e =>{
-    editEmployee($updateEmployee)
-    window.onload("./dashboard.")
-}) */
 
 
 //ADD NEW EMPLOYEE
