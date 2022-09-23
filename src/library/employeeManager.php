@@ -7,7 +7,9 @@ function addEmployees($newEmployee)
     $path = file_get_contents("../../resources/employees.json");
     $employees = json_decode($path, true);
 
-    $newEmployee["id"] = end($employees)["id"] + 1;          //función para que no se repitan los id, y autoasignarles un numero dependiendo del último
+/* uniqid(); genera un alfanumérico único de 13 digitos, generado a través de la hora actual en microsegundos*/
+
+    $newEmployee["id"] = mt_rand(00000,99999);          //función para que no se repitan los id, y autoasignarles un numero dependiendo del último
     array_push($employees, $newEmployee);
     file_put_contents("../../resources/employees.json", json_encode($employees));
     echo json_encode($employees);
@@ -88,11 +90,11 @@ function getEmployees($id)
             $postalCode = $path[$e]['postalCode'];
             $phoneNumber = $path[$e]['phoneNumber'];
 
-            $form = <<< form
+        $form = <<< form
         <form class="row g-3" method="POST" name="frmUpdate" action="./library/employeeController.php?action=edit&id=$id">
- 
-            <div class="modal-dialog">
-                <h3 class="text-primary mb-3 mt-5 text-center" >Update employee</h3>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <h3 class="text-primary mb-3 mt-5 text-center" >Update employee</h3>
         
                 
                     <div class="row mb-3">
@@ -145,7 +147,7 @@ function getEmployees($id)
                     </div>
                         
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary">Update changes</button>
                     </div>
                 </div>
             </div>
