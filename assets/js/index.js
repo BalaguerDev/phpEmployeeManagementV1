@@ -130,14 +130,20 @@ function deleteRow(id){
 }
 
 //SEARCH 
-
+{/* <input id ="myInput" onkeyup="myFunction()" class="form-control me-2" type="search" placeholder="🔍 Search..." aria-label="Search">
+ */}
     function myFunction() {
-      var input, filter, table, tr, th, i, txtValue;
+      let
+
       input = document.getElementById("myInput");
+
       filter = input.value.toUpperCase();
+
       table = document.getElementById("myTable");
+
       tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
+
+    for (i = 0; i < tr.length; i++) {
         th = tr[i].getElementsByTagName("th")["0"];
         if (th) {
           txtValue = th.textContent || th.innerText;
@@ -149,9 +155,5 @@ function deleteRow(id){
         }       
       }
     }
-
-const rowEmployee = document.getElementById('rowEmployee')
-const modalclassss = new mdb.Modal(rowEmployee)
-modalclassss.hide()
 
 
