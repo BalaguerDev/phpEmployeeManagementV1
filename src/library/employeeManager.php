@@ -46,7 +46,7 @@ function editEmployee(array $updateEmployee)
         $employees = json_encode($employees);
         file_put_contents("../../resources/employees.json", $employees);
 
-        header('location: ../dashboard3.php');
+        header('location: ../dashboard.php');
     }
 }
 
