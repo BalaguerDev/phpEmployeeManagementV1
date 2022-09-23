@@ -147,7 +147,7 @@ function deleteRow(id){
       table = document.getElementById("myTable");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
-        th = tr[i].getElementsByTagName("th")["1"];
+        th = tr[i].getElementsByTagName("th")["0"];
         if (th) {
           txtValue = th.textContent || th.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
