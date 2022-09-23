@@ -16,7 +16,7 @@
 
     <div class="container my-5 text-center">
         <div class="mt-5">  
-            <table class="table table-hover">
+            <table class="table table-hover" id ="myTable">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -43,7 +43,6 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <h3 class="text-primary mb-3 mt-2 text-center" id="exampleModalLabel">New Employee</h3>
-
                 <div class="modal-body">
                     <form method="post" name="frmAdd" class="row" id="addForm">
                         <div class="row">
@@ -128,6 +127,19 @@
 
 
 
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link">◀️</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">▶️</a>
+    </li>
+  </ul>
+</nav>
 
 <script src="../assets/js/index.js"></script>
 </body>
