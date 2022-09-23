@@ -21,25 +21,32 @@ function addEmployees($newEmployee){
 /*     $editRow = $_GET['editRow'];*/    
     
     $employees = json_decode(file_get_contents("../../resources/employees.json"), true);
-    for($e=0 ; $e< count($employees); $e++){
+ 
+    /* 
+    if(!empty($employees)) */
+    for($i=0 ; $i< count($employees); $i++){ 
+        for($e=0 ; $e< count($employees[$i]); $e++){
         if($employees[$e]["id"]     ==    $updateEmployee['id']){
-
-        $employees[$e]["name"]            =      $updateEmployee['name'];
-        $employees[$e]["lastName"]        =      $updateEmployee['lastName'];
-        $employees[$e]["email"]           =      $updateEmployee['email'];
-        $employees[$e]["city"]            =      $updateEmployee['city'];
-        $employees[$e]["streetAddress"]   =      $updateEmployee['streetAddress'];
-        $employees[$e]["state"]           =      $updateEmployee['state'];
-        $employees[$e]["age"]             =      $updateEmployee['age'];
-        $employees[$e]["postalCode"]      =      $updateEmployee['postalCode'];
-        $employees[$e]["phoneNumber"]     =      $updateEmployee['phoneNumber'];
+            
+            $employees[$e]["name"]            =      $updateEmployee['name'];
+            $employees[$e]["lastName"]        =      $updateEmployee['lastName'];
+            $employees[$e]["email"]           =      $updateEmployee['email'];
+            $employees[$e]["city"]            =      $updateEmployee['city'];
+            $employees[$e]["streetAddress"]   =      $updateEmployee['streetAddress'];
+            $employees[$e]["state"]           =      $updateEmployee['state'];
+            $employees[$e]["age"]             =      $updateEmployee['age'];
+            $employees[$e]["postalCode"]      =      $updateEmployee['postalCode'];
+            $employees[$e]["phoneNumber"]     =      $updateEmployee['phoneNumber'];
+            
+        
+            }
         }
-
+        
         
         $employees = json_encode($employees);
         file_put_contents("../../resources/employees.json", $employees);
-
-    header('location: ../dashboard3.php');
+  
+    header('location: ../dashboard3.php'); 
     }
 }
 
@@ -82,15 +89,56 @@ function getEmployees($id){
         $postalCode = $path[$e]['postalCode'];
         $phoneNumber= $path[$e]['phoneNumber'];
         
-        $form = <<<form
+        $form = <<< form
+        <form method="POST" name="frmUpdate" action="./library/employeeController.php?action=edit&id=$id">
+    
 
-            <form method="POST" name="frmUpdate" action="./library/employeeController.php?action=edit&id=$id">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtName" value="$name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtLastName" value="$lastName" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control"  name="txtEmail" value="$email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtAge" value="$age" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtStreet" value="$streetAddress" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtCity" value="$city" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtState" value="$state" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+            
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtPostalC" value="$postalCode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtPhone" value="$phoneNumber" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+                <input type="submit" value="Update" name="btnUpdate"> 
+
+        </form>
+
+           /*  <form method="POST" name="frmUpdate" action="./library/employeeController.php?action=edit&id=$id">
                 <label> First Name:
                     <input type="text" name="txtName" value="$name"> 
                 </label>
 
                 <label> Last Name:
-                    <input type="text" name="txtLastName" value="$lastName"> 
+                    <input type="text" name="txtLastName" placeholder="$"> 
                 </label>
 
                 <label> Email:
@@ -122,7 +170,7 @@ function getEmployees($id){
                 </label>
 
                 <input type="submit" value="Update" name="btnUpdate"> 
-            </form>
+            </form> */
         form;
        
         }
