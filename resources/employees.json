@@ -51,7 +51,8 @@
         "postalCode": "457320",
         "phoneNumber": "90876987654"
     },
-{
+
+    {
         "id": 5,
         "name": "Susan",
         "lastName": "Smith",
@@ -104,3 +105,4 @@
         "phoneNumber": "91232876454"
     }
 ]
+
